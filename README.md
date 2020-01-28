@@ -57,3 +57,91 @@ this will out put
 
 as a side note a Ternary statement is this....
 Condition ? value if true : value if false
+
+# tagged templates
+
+the old way
+
+let harry = `Mr. and Mrs. Dursley, of number four, Privet Driver`
+let lotr = `this is just for content`
+let orwell = `so much to say`
+let lines = [
+harry,
+lotr,
+orwell
+];
+function buildHTML(){
+console.log("it works")
+}
+const result = buildHTML();
+
+will out put
+"it works"
+
+the new way
+
+let harry = `Mr. and Mrs. Dursley, of number four, Privet Driver`
+let lotr = `this is just for content`
+let orwell = `so much to say`
+let lines = [
+harry,
+lotr,
+orwell
+];
+function buildHTML(strings , expression){
+console.log(strings)
+console.log(expression)
+}
+const result = buildHTML `<li>${lines}</li>`;
+
+will out put
+['<li>','</li>][`mr. and mrs. dursley, of number four, privet driver`,`this is just for content`,`so much to say`]
+
+breakdown
+the reason why this happens is this. buildHTML is evoked. the only sting elements in the line `<li>${lines}</li>` are the <li> tags.
+
+<li> is one string element and get stored into the 0 position of the first array and </li> is the second string element and gets stored in the 1 position of the array.
+
+then the expression happens which calls the array of lines and displays them.
+
+another example
+let harry = `Mr. and Mrs. Dursley, of number four, Privet Driver`
+let lotr = `this is just for content`
+let orwell = `so much to say`
+let lines = [
+harry,
+lotr,
+orwell
+];
+function buildHTML(strings , expression, experession2){
+console.log(strings)
+console.log(expression)
+console.log(expression2)
+}
+const result = buildHTML `<li>${lines[0]}${lines[1]}</li>`;
+
+will out put
+['<li>','</li>][`mr. and mrs. dursley, of number four, privet driver`,`this is just for content`]
+
+it will only display two of the three lines because I only have two expressions in the template. lines[0] is one expression and lines[1] is the second.
+
+another example
+
+let harry = `Mr. and Mrs. Dursley, of number four, Privet Driver`
+let lotr = `this is just for content`
+let orwell = `so much to say`
+let lines = [
+harry,
+lotr,
+orwell
+];
+function buildHTML(strings , expression){
+const newHTML = lines.map(function(line){
+return `${stings[0]}${line}${stings[1]}`
+})
+return newHTML
+}
+const result = buildHTML `<li>${lines}</li>`;
+
+will out put
+[`<li>mr. and mrs. dursley, of number four, privet driver</li>`,`<li>this is just for content</li>`,`<li>so much to say</li>`]
