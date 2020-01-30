@@ -145,3 +145,36 @@ const result = buildHTML `<li>${lines}</li>`;
 
 will out put
 [`<li>mr. and mrs. dursley, of number four, privet driver</li>`,`<li>this is just for content</li>`,`<li>so much to say</li>`]
+
+#default values in functions
+function getArea (x,y,s = 'square'){
+if (s===square){
+return x*y
+}
+else if (s==='triangle'){
+return (x*y)/2
+}
+}
+getArea(2,3)
+this will return 6 because the defualt value is square
+
+if I call it like this
+getArea(2,3,'triangle')
+it will return 3 because the triangle will over ride the square definition
+
+#restful arguments in functions
+every function in javascrip has access to a argument object. The argument object is a Array-like object corresponding to the arguments passed to a function.
+
+function findHighest(upperLimit){
+console.log(arguments)
+}
+findHighest(80,99,88,77,88,87,67,56,7,87,67,57,87)
+findHighest will out put an object like {80,99,88,77,88,87,67,56,7,87,67,57,87}
+
+if instead I would write the function like this
+function findHighest(upperLimit,...numList){
+console.log(arguments)
+}
+findHighest(80,99,88,77,88,87,67,56,7,87,67,57,87)
+it would out put an array of [99,88,87,67,56,7,87,67,57,87]
+restful arguments will have to be last because it takes what ever is left over and put into an array.
