@@ -20,7 +20,11 @@ axios
   .get('https://www.cryptocompare.com/api/data/coinlist/')
   .then(function(response) {
     // //////////////////
-    const getCoins = ``; //Finish this line. it needs 1. tags 2.ajax data, and 3. callback to uploadToDB()
+    const getCoins = coinTemplate`<div class="col-sm-12 col-md-6>${
+      response.data.Data
+    }${function() {
+      uploadToDB;
+    }}</div>`; //Finish this line. it needs 1. tags 2.ajax data, and 3. callback to uploadToDB()
     // //////////////////
 
     document.querySelector('#add-button').addEventListener('click', function() {
@@ -48,7 +52,16 @@ var coinTemplate = function(elems, coinData, callback) {
   return function(coin, location) {
     try {
       // //////////////////
-      // your stuff here...
+      const coinHTML = `
+      ${elems[0]}
+      <h3 class="name">${coinData[coin]['CoinData']}</div>
+      <div class="coin-image"><img src="https://www.cryptocompare.com${
+        coinData[coin['ImageUrl']]
+      }"/></div>
+      <div class="algorithm>${coinName[coin]['Algorithm']}</div>
+      ${elems[1]} `;
+      document.querySelector(location).innerHTML == coinHTML;
+      callback();
       // //////////////////
     } catch (error) {
       console.log(error);
