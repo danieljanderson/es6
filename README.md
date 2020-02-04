@@ -162,7 +162,8 @@ if I call it like this
 getArea(2,3,'triangle')
 it will return 3 because the triangle will over ride the square definition
 
-#restful arguments in functions
+# restful arguments in functions
+
 every function in javascrip has access to a argument object. The argument object is a Array-like object corresponding to the arguments passed to a function.
 
 function findHighest(upperLimit){
@@ -178,3 +179,99 @@ console.log(arguments)
 findHighest(80,99,88,77,88,87,67,56,7,87,67,57,87)
 it would out put an array of [99,88,87,67,56,7,87,67,57,87]
 restful arguments will have to be last because it takes what ever is left over and put into an array.
+
+# Spread Syntax
+
+Rest operator = I don't know how many vars(consts,or lets) your are sending, so I'll put whatever else you sent in an array
+
+ex
+function sum(...numberList){
+return numberList.reduce(
+function(total,num)
+return total+num
+)
+}
+const restWay = sum(1,2,3,4,5)
+console.log(restWay)
+
+that will output
+15
+
+spread syntax = My stuff is already an array. You've got separate params, unpack it.
+ex
+function sum (a,b,c,d,e){
+return a+b+c+d+e
+}
+const numbers = [1,2,3,4,5]
+const spreadWay = sum(...numbers)
+console.log(spreadWay)
+will out put
+15
+
+another example
+function memberDiscount (price, discount =.2 , tax=.06){
+return (price - (price + discount)) \* (1+tax)
+}
+const member1 = [48.99 , .3 , .09]
+const member1FinalPrice = memberDiscount(...member)
+console.log(member1FinalPrice)
+
+another example
+function aReducer (state, action){
+// this makes a copy of state
+let newState = {...state}
+newState.newProperty = action.payload
+
+console. log(newState)
+will out put
+{a:1,b:2,c:3, newProperty:30}
+
+console.log(state)
+will out put
+{a:1,b:2,c:3}
+}
+const currState = {
+a:1,
+b:2
+c:3
+}
+const action ={
+type:"done",
+payload: 30
+}
+aReducer(currState,action)
+
+# spread is an easy way of making objects from constructors
+
+function Ball(radius,x,y){
+this.r = radius
+this.x = x
+this.y = y
+}
+let ballArgs = [50,100,100]
+
+const ball2 = new Ball(...ballArgs)
+console.log(ball2)
+will out put
+Ball{r:50,x:100,y:100}
+
+# its also useful for droping multiple elements into an array
+
+const others =['a','b','c']
+const myArray = [1,2,3,4,...others,6,7,8]
+console.log(myArray)
+will out put
+[1,2,3,4,'a','b','c',6,7,8]
+
+# its also good for copying arrays
+
+let myArray2 = [1,2,3,4]
+let myArray3 = [...myArray2]
+myArray3.push(5)
+console.log(myArray2)
+will out put
+[1,2,3,4]
+
+console.log(myArray3)
+will out put
+[1,2,3,4,5]
