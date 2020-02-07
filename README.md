@@ -275,3 +275,41 @@ will out put
 console.log(myArray3)
 will out put
 [1,2,3,4,5]
+
+# arrow functions
+
+ex
+old way
+
+const myArray =[1,2,3]
+myArray.map(function(elem,i){
+console.log(elm)
+})
+
+arrow function way
+myArray.map((elem,i)=>{
+console.log(elem)
+})
+
+when you write an anonymous function using the word function it creates a new this
+
+however the arrow function doesn't. It will take the context of where your at.
+
+for example
+arrow function way
+myArray.map((elem,i)=>{
+console.log(elem)
+})
+the context of this function is the window or the global `this`.
+
+Another words if you see an arrow function and you want to know what the context is look for the last time the word function was written and thats your `this`.
+
+A common example is this
+function Timer(){
+setInterval(()=>{
+console.log(this)
+},250)
+}
+const tier = new Timer()
+
+this will out put Timer{} ever 250 miloseconds
