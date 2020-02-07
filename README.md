@@ -313,3 +313,73 @@ console.log(this)
 const tier = new Timer()
 
 this will out put Timer{} ever 250 miloseconds
+
+# object literal
+
+primary ways of creating objects
+
+let x = new Object()
+
+let x = Object.create(null)
+
+let x = {
+
+}
+
+the old way
+const stuffFromElsewhere = {
+name: "Rob",
+career: "Teacher",
+language:"JS",
+aMethod:function(){
+console.log("I teach")
+}
+}
+stuffFromElsewhere.aMethod()
+will out put
+"I teach"
+
+the update on object literal is this
+if what you are naming on the left is going to be the same name the right you can only write it once.
+
+for example if I had a name property name and a method I can write it
+const newThing{
+name,
+aMethod(){
+console.log("I teach")
+}
+}
+
+# Desstructuring
+
+getArea({width: 70,height:200})
+function getArea({width,height}){
+console.log(width)
+}
+it will out put 70
+
+you can also write it like
+function getArea({height,width}){
+console.log(width)
+}
+it will out put 70 because its looking for keys not values.
+
+you can even call it like this
+getArea({height:200,width})
+
+it will still out put 70.
+
+last example
+this is the awful way
+function userProfile(userData){
+const name = userData.name
+const address = userData.address
+}
+
+better way
+function userProfile(userData){
+const{name,address} = userData
+}
+
+the bestway
+function userProfile(name,address)
