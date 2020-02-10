@@ -365,3 +365,47 @@ const{name,address} = userData
 
 the bestway
 function userProfile(name,address)
+
+# Classes
+The old way
+function SuperHero(name,strength,speed,weapon,cape){
+  this.name = name
+  this.strength = strength
+  this.speed = speed
+  this.weapon = weapon
+  this.cape = cape
+  this.goodHero = true
+  this.powerUp = function(){
+    this.strength +=5
+  }
+}
+note you cant deconstruct because there is no way to assign anything to the this key word.
+
+let hero1 = new SuperHero("hank",18,5,"Fist",true)
+
+this is a bad way to write a class in javascript because each new object will get its own powerup function
+
+instead it should be written as 
+SuperHero.prototype.goodHero = true
+Super.prototype.powerUp = function(){
+  this.strength += 5
+}
+
+the es 6 way
+Replace the constructor with the "class" keyword
+
+
+class SuperHero{
+  constructor(name,strength,speed,weapon,cape){
+    this.name = name
+    this.strength = strength
+    this.speed = speed
+    this.weapon = weapon
+    this.cape = cape
+    this.goodHero = true
+   }
+   powerUp(){
+     this.strength+=5
+   }
+}
+let hero = new SuperHero("Hank",18,5,"Fist",true)
