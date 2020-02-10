@@ -390,6 +390,7 @@ SuperHero.prototype.goodHero = true
 Super.prototype.powerUp = function(){
   this.strength += 5
 }
+This is better because all the objects you create will be looking at this one function.  So the computer only stores it once in memory as oppose to if you write it inside the constructor to as many objects as you created.
 
 the es 6 way
 Replace the constructor with the "class" keyword
@@ -409,3 +410,35 @@ class SuperHero{
    }
 }
 let hero = new SuperHero("Hank",18,5,"Fist",true)
+
+# setters and getters
+Setters are a function in the class that modifies a private variable in the same class
+
+getters are a function in a class that returns a value of a private variable.
+
+An example:
+
+class SuperHero{
+  constructor(name,strength,speed,weapon,cape){
+    this.name = name
+    this.strength = strength
+    this.speed = speed
+    this.weapon = weapon
+    this.cape = cape
+    this.goodHero = true
+   }
+   powerUp(){
+     this.strength+=5
+   }
+   get name(){
+     console.log("getting name")
+   }
+   set  name(newName){
+     console.log("setting name")
+     this.name = newName
+   }
+}
+const hankDetails = ["Hank",18,5,"Fist",true]
+let hero = new SuperHero(...hankDetails)
+
+this will cause a recursive issue.  if you add an _ in front of the variables they will protect them.
