@@ -241,27 +241,9 @@ payload: 30
 }
 aReducer(currState,action)
 
-# spread is an easy way of making objects from constructors
+---
 
-function Ball(radius,x,y){
-this.r = radius
-this.x = x
-this.y = y
-}
-let ballArgs = [50,100,100]
-
-const ball2 = new Ball(...ballArgs)
-console.log(ball2)
-will out put
-Ball{r:50,x:100,y:100}
-
-# its also useful for droping multiple elements into an array
-
-const others =['a','b','c']
-const myArray = [1,2,3,4,...others,6,7,8]
-console.log(myArray)
-will out put
-[1,2,3,4,'a','b','c',6,7,8]
+## 🧐 Problem Statement <a name = "problem_statement"></a>
 
 # its also good for copying arrays
 
