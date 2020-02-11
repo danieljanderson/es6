@@ -463,3 +463,40 @@ class DoMath{
 let x = DoMath.add(2,5)
 console.log(x)
 and you will get 7
+
+# sub Classes  (extands)
+class SuperHero{
+  constructor(name,strength,speed,weapon,cape){
+    this.name = name
+    this.strength = strength
+    this.speed = speed
+    this.weapon = weapon
+    this.cape = cape
+   }
+   powerUp(){
+     this.strength+=5
+   }
+   get name(){
+     console.log("getting name")
+   }
+   set  name(newName){
+     console.log("setting name")
+     this.name = newName
+   }
+   static goodHero(){
+     return true
+   }
+}
+class Human extends SuperHero{
+  constructor(healthpoints,...superHeroStuff){
+    super(...superHeroStuff)
+    this._healthPoints = healthPoints
+  }
+}
+const billDetails = [20,"Bill,10,8,"Fast Feet", true]
+const hero3 = new Human(...billDetails)
+
+when you are making a subclass and want to define this you have to run the function super (super is a keyword function) which will run the parent function first and then this will be defined.
+
+Note it will run all the child functions first and then go to the parent.
+
