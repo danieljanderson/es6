@@ -442,3 +442,24 @@ const hankDetails = ["Hank",18,5,"Fist",true]
 let hero = new SuperHero(...hankDetails)
 
 this will cause a recursive issue.  if you add an _ in front of the variables they will protect them.
+
+# Static Methods
+
+Static methods are good functions that are run through the class not object data.  its good to package funtions together.  
+for example
+
+function add (x,y){
+  return x+y
+}
+console.log(add(2,5))
+would out put 7 but I would need to copy and past that function in another project if I would want to reuse it.  Plus it could have naming conflicts.
+
+I can now write it like this which will protect the global scope.
+class DoMath{
+  static add(x,y){
+    return x + y
+  }
+}
+let x = DoMath.add(2,5)
+console.log(x)
+and you will get 7
